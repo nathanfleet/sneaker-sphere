@@ -5,7 +5,7 @@ const config = require('../config');
 async function getMultiple(page = 1){
   const offset = helper.getOffset(page, config.listPerPage);
 
-  // change this eventually
+  // change this to relevant table query
   const rows = await db.query(
     `SELECT id, name, released_year, githut_rank, pypl_rank, tiobe_rank 
     FROM programming_languages LIMIT ${offset},${config.listPerPage}`

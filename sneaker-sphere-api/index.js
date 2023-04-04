@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = 3000;
 //change
-const sneakerRouter = require("./routes/sneaker");
+const table1Router = require("./routes/table1");
 app.use(express.json());
 app.use(
   express.urlencoded({
@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
   res.json({ message: "ok" });
 });
 // change
-app.use("/sneaker", sneakerRouter);
+app.use("/table1", table1Router);
 /* Error handler middleware */
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
