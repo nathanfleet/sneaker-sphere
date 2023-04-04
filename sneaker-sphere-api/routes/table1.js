@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const sneaker = require('../services/table1');
+const table1 = require('../services/table1');
 
 // GET
 router.get('/', async function(req, res, next) {
