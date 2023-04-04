@@ -1,2 +1,4 @@
 # sneaker-sphere
-Database group project
+   
+Install Node.js      
+Clone repo and run "npm install" to install dependencies
