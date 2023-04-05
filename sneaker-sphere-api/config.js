@@ -2,9 +2,9 @@ const config = {
     db: {
       // will need to replace these with environment variables
       host: "db4free.net",
-      user: "restapitest123",
-      password: "restapitest123",
-      database: "restapitest123",
+      user: "fleetnathan",
+      password: "nathan2025",
+      database: "sneakersphere",
     },
     listPerPage: 10,
   };
