@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function Sell() {
+  const [userID, setUserID] = useState('');
+  const [productName, setProductName] = useState('');
+  const [brand, setBrand] = useState('');
+  const [model, setModel] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [price, setPrice] = useState('');
+  const [color, setColor] = useState('');
   const generateSubID = () => {
     const id = `S${Math.floor(Math.random() * 900) + 100}`;
     // check if the id already exists
