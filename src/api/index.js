@@ -1,10 +1,12 @@
 const express = require("express");
+const cors = require("cors"); // Import the cors middleware
 const app = express();
-const port = 3000;
+const port = 4000; // Use a different port than the React app
 
 const ProductsRouter = require("./routes/Products");
-const SubmissionsRouter = require("./routes/Submissions");
+const SubmissionRouter = require("./routes/Submission");
 
+app.use(cors()); // Use the cors middleware
 app.use(express.json());
 app.use(
   express.urlencoded({
@@ -17,7 +19,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/products", ProductsRouter);
-app.use("/submissions", SubmissionsRouter);
+app.use("/submission", SubmissionRouter);
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {
@@ -28,5 +30,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
+  console.log(`API listening at http://localhost:${port}`);
 });

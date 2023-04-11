@@ -3,10 +3,10 @@ import logo from '../assets/logo.png';
 
 function Hero() {
   return (
-    <div className="bg-gray-900 text-white">
+    <div className="bg-gray-900 text-white w-screen h-screen">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
         <div className="text-center">
-          <img src={logo} alt="logo" className="h-25 w-25 mx-auto" />
+          <img src={logo} alt="logo" className="h-20 w-20 mx-auto" />
           <h1 className="mt-6 text-3xl font-extrabold sm:text-4xl">
             Welcome to SneakerSphere
           </h1>

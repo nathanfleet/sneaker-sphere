@@ -35,7 +35,7 @@ function Sell() {
     try {
       // post product data to server
       // UPDATE ENDPOINTS
-      await axios.post('/api/products', {
+      await axios.post('http://localhost:4000/products', {
         productID: newProductID,
         productName,
         brand,
@@ -47,7 +47,7 @@ function Sell() {
   
       // post submission data to server
       // UPDATE ENDPOINTS
-      await axios.post('/api/submissions', {
+      await axios.post('http://localhost:4000/submission', {
         submissionID: newSubmissionID,
         userID,
         productID: newProductID, // use the new product id
@@ -98,108 +98,29 @@ function Sell() {
               type="text"
               name="user-id"
               id="user-id"
-              className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full h-10 px-3 py-2 border-gray-300 rounded-md max-w-xs"
               value={userID}
               onChange={(e) => setUserID(e.target.value)}
             />
-          </div>
+        </div>
+        <div className="mt-4">
+            <label
+              htmlFor="product-name"
+              className="block text-sm font-medium text-white"
+            >
+              Product Name
+            </label>
+            <input
+              type="text"
+              name="product-name"
+              id="product-name"
+              className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full h-10 px-3 py-2 border-gray-300 rounded-md max-w-xs"
+              value={productName}
+              onChange={(e) => setProductName(e.target.value)}
+            />
+        </div>
+
           
-          <div className="mt-4">
-          <label
-            htmlFor="product-name"
-            className="block text-sm font-medium text-white"
-          >
-            Product Name
-          </label>
-          <input
-            type="text"
-            name="product-name"
-            id="product-name"
-            className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-            value={productName}
-            onChange={(e) => setProductName(e.target.value)}
-          />
-      </div>
-      <div className="mt-4">
-        <label
-          htmlFor="brand"
-          className="block text-sm font-medium text-white"
-        >
-          Brand
-        </label>
-        <input
-          type="text"
-          name="brand"
-          id="brand"
-          className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-          value={brand}
-          onChange={(e) => setBrand(e.target.value)}
-        />
-      </div>
-      <div className="mt-4">
-        <label
-          htmlFor="model"
-          className="block text-sm font-medium text-white"
-        >
-          Model
-        </label>
-        <input
-          type="text"
-          name="model"
-          id="model"
-          className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-          value={model}
-          onChange={(e) => setModel(e.target.value)}
-        />
-      </div>
-      <div className="mt-4">
-        <label
-          htmlFor="quantity"
-          className="block text-sm font-medium text-white"
-        >
-          Quantity
-        </label>
-        <input
-          type="text"
-          name="quantity"
-          id="quantity"
-          className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-          value={quantity}
-          onChange={(e) => setQuantity(e.target.value)}
-        />
-      </div>
-      <div className="mt-4">
-        <label
-          htmlFor="price"
-          className="block text-sm font-medium text-white"
-        >
-          Price
-        </label>
-        <input
-          type="text"
-          name="price"
-          id="price"
-          className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
-      </div>
-      <div className="mt-4">
-        <label
-          htmlFor="color"
-          className="block text-sm font-medium text-white"
-        >
-          Color
-        </label>
-        <input
-          type="text"
-          name="color"
-          id="color"
-          className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-          value={color}
-          onChange={(e) => setColor(e.target.value)}
-        />
-      </div>
       <button
         type="submit"
         className="mt-8 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:w-auto"

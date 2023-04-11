@@ -14,6 +14,7 @@ router.get('/', async function(req, res, next) {
 
 /* POST  */
 router.post('/', async function(req, res, next) {
+  console.log(req.body);
   try {
     res.json(await Products.create(req.body));
   } catch (err) {
