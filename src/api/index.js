@@ -5,6 +5,7 @@ const port = 4000; // Use a different port than the React app
 
 const ProductsRouter = require("./routes/Products");
 const SubmissionRouter = require("./routes/Submission");
+const UserInformationRouter = require("./routes/UserInformation");
 
 app.use(cors()); // Use the cors middleware
 app.use(express.json());
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 
 app.use("/products", ProductsRouter);
 app.use("/submission", SubmissionRouter);
+app.use("/userinformation", UserInformationRouter);
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {
