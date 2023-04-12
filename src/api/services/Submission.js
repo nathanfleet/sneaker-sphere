@@ -6,7 +6,7 @@ async function getMultiple(page = 1) {
   const offset = helper.getOffset(page, config.listPerPage);
 
   const rows = await db.query(
-    `SELECT ProductID, ProductName, Brand, Model, Quantity, Price, Color, Stock FROM Products LIMIT ${offset},${config.listPerPage}`
+    `SELECT ProductID, UserID, ProductID FROM Submission LIMIT ${offset},${config.listPerPage}`
   );
   const data = helper.emptyOrRows(rows);
   const meta = { page };
@@ -18,11 +18,12 @@ async function getMultiple(page = 1) {
 }
 
 async function create(submission) {
+  console.log('Submission ID: ', submission.submissionID);
+  console.log('User ID: ', submission.userID);
+  console.log('Product ID: ', submission.productID);
   const result = await db.query(
-    `INSERT INTO Submission 
-    (SubmissionID, UserID, ProductID) 
-    VALUES 
-    ('${submission.submissionID}', '${submission.userID}', '${submission.productID}')`
+    'INSERT INTO Submission (SubmissionID, UserID, ProductID) VALUES (?, ?, ?)',
+    [submission.submissionID, submission.userID, submission.productID]
   );
 
   let message = 'Error in creating submission';
@@ -33,6 +34,7 @@ async function create(submission) {
 
   return { message };
 }
+
 
 async function update(id, submission) {
   const result = await db.query(

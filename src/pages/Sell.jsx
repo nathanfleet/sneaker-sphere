@@ -3,60 +3,30 @@ import axios from 'axios';
 
 function Sell() {
   const [UserID, setUserID] = useState('');
-  const [ProductName, setProductName] = useState('');
-  const [Brand, setBrand] = useState('');
-  const [Model, setModel] = useState('');
-  const [Quantity, setQuantity] = useState('');
-  const [Price, setPrice] = useState('');
-  const [Color, setColor] = useState('');
-  const generateSubID = () => {
-    let id = "abcd";
-    
-    return id;
-  };
-  
-  
-  const generateProdID = () => {
-    const id = `P${Math.floor(Math.random() * 900) + 100}`;
-    // check if the id already exists
-    if (localStorage.getItem(id)) {
-      return generateProdID(); // recursively generate new id if id already exists
-    }
-    return id;
-  };
-  
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const newSubmissionID = generateSubID();
-    const newProductID = generateProdID(); // generate new product id
-  
-    try {
-      // post product data to server
-      // UPDATE ENDPOINTS
-      await axios.post('http://localhost:4000/products', {
-        ProductID: newProductID,
-        ProductName,
-        Brand,
-        Model,
-        Quantity,
-        Price,
-        Color,
-      });
+const [ProductName, setProductName] = useState('');
+const [Brand, setBrand] = useState('');
+const [Model, setModel] = useState('');
+const [Quantity, setQuantity] = useState('');
+const [Price, setPrice] = useState('');
+const [Color, setColor] = useState('');
 
-      // ERR with submission id
-      // possibly schema
-      // will figure out later
-  
-      console.log(newSubmissionID);
-      // post submission data to server
-      // UPDATE ENDPOINTS
-      // await axios.post('http://localhost:4000/submission', {
-      //   SubmissionID: newSubmissionID,
-      //   UserID,
-      //   ProductID: newProductID, // use the new product id
-      // });
-  
-      localStorage.setItem(newSubmissionID, JSON.stringify({
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await axios.post('http://localhost:4000/products-and-submission', {
+      UserID,
+      ProductName,
+      Brand,
+      Model,
+      Quantity,
+      Price,
+      Color,
+    });
+
+    if (response.data.success) {
+      const { SubmissionID } = response.data.data;
+      localStorage.setItem(SubmissionID, JSON.stringify({
         UserID,
         ProductName,
         Brand,
@@ -73,15 +43,19 @@ function Sell() {
       setQuantity('');
       setPrice('');
       setColor('');
-    } catch (error) {
-      alert('An error occurred while submitting your shoe.');
-      console.error(error);
+    } else {
+      throw new Error(response.data.message);
     }
-  };
-  
+  } catch (error) {
+    alert('An error occurred while submitting your shoe.');
+    console.error(error);
+  }
+};
+
+
 
   return (
-    <div className="py-16 bg-gray-900 overflow-hidden h-screen w-screen">
+    <div className="py-16 bg-gray-900 overflow-hidden w-screen">
       <div className="max-w-xl mx-auto px-4 space-y-8 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-extrabold tracking-tight text-white">
           Would you like to add your sneakers to the SneakerSphere?
