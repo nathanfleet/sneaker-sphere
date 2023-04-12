@@ -6,7 +6,7 @@ async function getMultiple(page = 1){
   const offset = helper.getOffset(page, config.listPerPage);
 
   const rows = await db.query(
-    `SELECT ProductID, ProductName, Brand, Model, Quantity, Price, Color, Stock FROM Products LIMIT ${offset},${config.listPerPage}`
+    `SELECT ProductID, ProductName, Brand, Model, Quantity, Price, Color FROM Products LIMIT ${offset},${config.listPerPage}`
   );
   const data = helper.emptyOrRows(rows);
   const meta = {page};
@@ -20,9 +20,9 @@ async function getMultiple(page = 1){
 async function create(product) {
   const result = await db.query(
     `INSERT INTO Products 
-    (ProductID, ProductName, Brand, Model, Quantity, Price, Color, Stock) 
+    (ProductID, ProductName, Brand, Model, Quantity, Price, Color) 
     VALUES 
-    ('${product.ProductID}', '${product.ProductName}', '${product.Brand}', '${product.Model}', '${product.Quantity}', ${product.Price}, '${product.Color}', ${product.Stock})`
+    ('${product.ProductID}', '${product.ProductName}', '${product.Brand}', '${product.Model}', '${product.Quantity}', ${product.Price}, '${product.Color}')`
   );
 
   let message = 'Error in creating product';
@@ -37,7 +37,7 @@ async function create(product) {
 async function update(id, product) {
   const result = await db.query(
     `UPDATE Products 
-    SET ProductName='${product.ProductName}', Brand='${product.Brand}', Model='${product.Model}', Quantity='${product.Quantity}', Price=${product.Price}, Color='${product.Color}', Stock=${product.Stock}
+    SET ProductName='${product.ProductName}', Brand='${product.Brand}', Model='${product.Model}', Quantity='${product.Quantity}', Price=${product.Price}, Color='${product.Color}'
     WHERE ProductID='${id}'`
   );
 

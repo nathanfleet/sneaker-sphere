@@ -18,6 +18,16 @@ async function getMultiple(page = 1) {
 }
 
 async function create(user) {
+  const rows = await db.query(
+    `SELECT UserID FROM \`UserInformation\` WHERE UserID='${user.userID}'`
+  );
+
+  if (rows.length > 0) {
+    const error = new Error('User already registered');
+    error.statusCode = 409;
+    throw error;
+  }
+
   const result = await db.query(
     `INSERT INTO \`UserInformation\` 
     (UserID, Name, Address, Email) 
@@ -29,22 +39,6 @@ async function create(user) {
 
   if (result.affectedRows) {
     message = 'User created successfully';
-  }
-
-  return { message };
-}
-
-async function update(id, user) {
-  const result = await db.query(
-    `UPDATE \`UserInformation\` 
-    SET Name='${user.name}', Address='${user.address}', Email='${user.email}'
-    WHERE UserID='${id}'`
-  );
-
-  let message = 'Error in updating user';
-
-  if (result.affectedRows) {
-    message = 'User updated successfully';
   }
 
   return { message };
@@ -67,6 +61,5 @@ async function remove(id) {
 module.exports = {
   getMultiple,
   create,
-  update,
   remove,
 };
