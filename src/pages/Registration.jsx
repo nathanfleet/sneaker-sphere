@@ -40,6 +40,9 @@ const handleSubmit = (event) => {
   return (
     <div className="bg-gray-900 flex justify-center items-center h-screen">
       <form className="w-full max-w-lg" onSubmit={handleSubmit}>
+        <h2 className="text-center text-white text-3xl font-bold uppercase mb-4">Registration</h2>
+        <p className="text-center text-white font-semibold uppercase mb-4">UserID should be 4-char in length</p>
+
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
             <label
@@ -112,7 +115,7 @@ const handleSubmit = (event) => {
     />
   </div>
 </div>
-<div className="flex flex-wrap -mx-3 mb-6">
+<div className="flex flex-wrap -mx-3 mb-6 justify-center">
   <div className="w-full px-3 mb-6 md:mb-0">
     <button
       type="submit"

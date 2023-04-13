@@ -7,6 +7,7 @@ const ProductsRouter = require("./routes/Products");
 const SubmissionRouter = require("./routes/Submission");
 const UserInformationRouter = require("./routes/UserInformation");
 const ProdAndSubRouter = require("./routes/Products-and-Submission");
+const OrdersRouter = require("./routes/Orders");
 
 app.use(cors()); // Use the cors middleware
 app.use(express.json());
@@ -24,6 +25,7 @@ app.use("/products", ProductsRouter);
 app.use("/submission", SubmissionRouter);
 app.use("/userinformation", UserInformationRouter);
 app.use("/products-and-submission", ProdAndSubRouter);
+app.use("/orders", OrdersRouter);
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {

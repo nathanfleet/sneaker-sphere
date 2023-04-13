@@ -55,7 +55,7 @@ const handleSubmit = async (e) => {
 
 
   return (
-    <div className="y-16 bg-gray-900 overflow-hidden h-screen w-screen">
+    <div className="y-16 bg-gray-900 overflow-hidden h-screen w-screen flex items-center">
       <div className="max-w-xl mx-auto px-4 flex flex-col items-center space-y-8 sm:px-6 lg:max-w-7xl lg:px-8">
         <h3 className="text-xl font-extrabold tracking-tight text-white">
           Sell your shoe!

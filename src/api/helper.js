@@ -17,11 +17,17 @@ function getOffset(currentPage = 1, listPerPage) {
   const generateProdID = () => {
     const id = `P${Math.floor(Math.random() * 900) + 100}`;
     return id;
-  };  
+  };
+
+  const generateOrderID = () => {
+    const id = `P${Math.floor(Math.random() * 900) + 100}`;
+    return id;
+  };
   
   module.exports = {
     getOffset,
     emptyOrRows,
     generateSubID,
-    generateProdID
+    generateProdID,
+    generateOrderID
   }
