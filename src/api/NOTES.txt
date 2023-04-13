@@ -1,4 +1,1 @@
-- will probably need separate .js files for each table in database
-- will probably need to replace username / pass in config.js with env variables for security
-
-This API was created using: https://blog.logrocket.com/build-rest-api-node-express-mysql/
+https://blog.logrocket.com/build-rest-api-node-express-mysql/

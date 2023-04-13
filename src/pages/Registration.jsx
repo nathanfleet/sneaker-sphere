@@ -38,13 +38,13 @@ const handleSubmit = (event) => {
 
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="bg-gray-900 flex justify-center items-center h-screen">
       <form className="w-full max-w-lg" onSubmit={handleSubmit}>
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
             <label
               htmlFor="userID"
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
             >
               UserID
             </label>
@@ -62,7 +62,7 @@ const handleSubmit = (event) => {
           <div className="w-full px-3">
             <label
               htmlFor="name"
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
             >
               Name
             </label>
@@ -80,7 +80,7 @@ const handleSubmit = (event) => {
           <div className="w-full px-3">
             <label
               htmlFor="address"
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
             >
               Address
             </label>
@@ -98,7 +98,7 @@ const handleSubmit = (event) => {
   <div className="w-full px-3 mb-6 md:mb-0">
     <label
       htmlFor="email"
-      className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+      className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
     >
       Email
     </label>

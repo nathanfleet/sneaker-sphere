@@ -12,13 +12,15 @@ function App() {
     <BrowserRouter>
       <div>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Hero />} />
-          <Route path="/register" element={<Registration />} />
-          <Route path="/buy" element={<Buy />} />
-          <Route path="/sell" element={<Sell />} />
-          <Route path="*" element={<div>404</div>} />
-        </Routes>
+        <div className="mt-20">
+          <Routes>
+            <Route path="/" element={<Hero />} />
+            <Route path="/register" element={<Registration />} />
+            <Route path="/buy" element={<Buy />} />
+            <Route path="/sell" element={<Sell />} />
+            <Route path="*" element={<div>404</div>} />
+          </Routes>
+        </div>
       </div>
     </BrowserRouter>
   );
