@@ -1,8 +1,8 @@
 import React from 'react';
 
-const SellTitle = () => {
+const BuyTitle = () => {
   return (
-    <div className="bg-gray-100 py-12">
+    <div className="bg-gray-100 py-12 mt-20">
       <div className="container mx-auto px-4">
         <div className="max-w-lg mx-auto">
           <h1 className="text-4xl font-bold text-center mb-4">Need Some New Kicks?</h1>
@@ -13,4 +13,4 @@ const SellTitle = () => {
   );
 };
 
-export default SellTitle;
+export default BuyTitle;

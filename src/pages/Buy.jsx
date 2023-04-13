@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import SellTitle from '../components/SellTitle';
+import BuyTitle from '../components/BuyTitle';
 import shoe from "../assets/shoe.png"
 
 const Buy = () => {
@@ -25,7 +25,7 @@ const Buy = () => {
 
   return (
     <div className="bg-gray-100 h-screen">
-      <SellTitle />
+      <BuyTitle />
       <div className="flex flex-wrap justify-center items-center py-12">
         {products.map((product) => (
           <div key={product.ProductID} className="w-full md:w-1/2 lg:w-1/3 px-4 py-4 flex">
