@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 function Registration() {
@@ -6,31 +6,25 @@ function Registration() {
 const [name, setName] = useState("");
 const [address, setAddress] = useState("");
 const [email, setEmail] = useState("");
-const [isAlreadyRegistered, setIsAlreadyRegistered] = useState(false);
-const [registeredUserID, setRegisteredUserID] = useState("");
-
-useEffect(() => {
-  if (isAlreadyRegistered) {
-    alert(`You are already registered, your ID is: ${registeredUserID}`);
-    setIsAlreadyRegistered(false);
-    setRegisteredUserID("");
-  }
-}, [isAlreadyRegistered, registeredUserID]);
 
 const handleSubmit = (event) => {
   event.preventDefault();
   axios
     .get(`http://localhost:4000/userinformation?UserID=${userID}`)
     .then((res) => {
-      if (res.data.data.length > 0) {
-        setIsAlreadyRegistered(true);
-        setRegisteredUserID(userID);
+      if (res.data.data.length > 0 && res.data.data[0].UserID === userID) {
+        alert("User already exists with that ID.");
       } else {
         const data = { userID, name, address, email };
         axios
           .post("http://localhost:4000/userinformation", data)
           .then((res) => {
             console.log(res.data);
+            alert("Registration successful!");
+            setUserID("");
+            setName("");
+            setAddress("");
+            setEmail("");
           })
           .catch((err) => {
             console.error(err);
@@ -41,6 +35,7 @@ const handleSubmit = (event) => {
       console.error(err);
     });
 };
+
 
   return (
     <div className="flex justify-center items-center h-screen">

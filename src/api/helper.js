@@ -10,11 +10,7 @@ function getOffset(currentPage = 1, listPerPage) {
   }
 
   const generateSubID = () => {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    let id = '';
-    for (let i = 0; i < 4; i++) {
-      id += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
+    const id = `S${Math.floor(Math.random() * 900) + 100}`;
     return id;
   };
   
