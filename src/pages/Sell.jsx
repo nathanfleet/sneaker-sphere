@@ -55,11 +55,8 @@ const handleSubmit = async (e) => {
 
 
   return (
-    <div className="y-16 bg-gray-900 overflow-hidden w-screen h-screen">
+    <div className="y-16 bg-gray-900 overflow-hidden w-screen mt-20">
       <div className="max-w-xl mx-auto px-4 flex flex-col items-center space-y-8 sm:px-6 lg:max-w-7xl lg:px-8">
-        <h2 className="mt-10 text-2xl font-extrabold tracking-tight text-white text-center">
-          Would you like to add your sneakers to the SneakerSphere?
-        </h2>
         <h3 className="text-xl font-extrabold tracking-tight text-white">
           Sell your shoe!
         </h3>
