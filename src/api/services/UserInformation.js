@@ -17,12 +17,12 @@ async function getMultiple(page = 1) {
   };
 }
 
-async function create(user) {
-  const rows = await db.query(
-    `SELECT UserID FROM \`UserInformation\` WHERE UserID='${user.userID}'`
+async function create(User) {
+  const resultCheck = await db.query(
+    `SELECT COUNT(*) as count FROM \`UserInformation\` WHERE UserID='${User.UserID}'`
   );
 
-  if (rows.length > 0) {
+  if (resultCheck[0].count > 0) {
     const error = new Error('User already registered');
     error.statusCode = 409;
     throw error;
@@ -32,7 +32,7 @@ async function create(user) {
     `INSERT INTO \`UserInformation\` 
     (UserID, Name, Address, Email) 
     VALUES 
-    ('${user.userID}', '${user.name}', '${user.address}', '${user.email}')`
+    ('${User.userID}', '${User.name}', '${User.address}', '${User.email}')`
   );
 
   let message = 'Error in creating user';
@@ -40,6 +40,8 @@ async function create(user) {
   if (result.affectedRows) {
     message = 'User created successfully';
   }
+
+  console.log('User object:', User);
 
   return { message };
 }

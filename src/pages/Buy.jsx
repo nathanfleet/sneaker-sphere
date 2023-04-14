@@ -11,7 +11,7 @@ const Buy = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/products');
+        const response = await axios.get('https://sneaker-sphere-api.herokuapp.com/products');
         if (response.data.data.length > 0) {
           setProducts(response.data.data);
         } else {

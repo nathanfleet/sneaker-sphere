@@ -14,7 +14,7 @@ const handleSubmit = async (e) => {
   e.preventDefault();
 
   try {
-    const response = await axios.post('http://localhost:4000/products-and-submission', {
+    const response = await axios.post('https://sneaker-sphere-api.herokuapp.com/products-and-submission', {
       UserID,
       ProductName,
       Brand,

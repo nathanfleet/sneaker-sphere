@@ -2,22 +2,22 @@ import { useState } from "react";
 import axios from "axios";
 
 function Registration() {
-  const [userID, setUserID] = useState("");
-const [name, setName] = useState("");
-const [address, setAddress] = useState("");
-const [email, setEmail] = useState("");
+  const [UserID, setUserID] = useState("");
+const [Name, setName] = useState("");
+const [Address, setAddress] = useState("");
+const [Email, setEmail] = useState("");
 
 const handleSubmit = (event) => {
   event.preventDefault();
   axios
-    .get(`http://localhost:4000/userinformation?UserID=${userID}`)
+    .get(`https://sneaker-sphere-api.herokuapp.com/userinformation?UserID=${UserID}`)
     .then((res) => {
-      if (res.data.data.length > 0 && res.data.data[0].UserID === userID) {
+      if (res.data.data.length > 0 && res.data.data[0].UserID === UserID) {
         alert("User already exists with that ID.");
       } else {
-        const data = { userID, name, address, email };
+        const data = { UserID, Name, Address, Email };
         axios
-          .post("http://localhost:4000/userinformation", data)
+          .post("https://sneaker-sphere-api.herokuapp.com/userinformation", data)
           .then((res) => {
             console.log(res.data);
             alert("Registration successful!");
@@ -55,7 +55,7 @@ const handleSubmit = (event) => {
               type="text"
               id="userID"
               name="userID"
-              value={userID}
+              value={UserID}
               onChange={(event) => setUserID(event.target.value)}
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             />
@@ -73,7 +73,7 @@ const handleSubmit = (event) => {
               type="text"
               id="name"
               name="name"
-              value={name}
+              value={Name}
               onChange={(event) => setName(event.target.value)}
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             />
@@ -91,7 +91,7 @@ const handleSubmit = (event) => {
               type="text"
               id="address"
               name="address"
-              value={address}
+              value={Address}
               onChange={(event) => setAddress(event.target.value)}
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             />
@@ -109,7 +109,7 @@ const handleSubmit = (event) => {
       type="email"
       id="email"
       name="email"
-      value={email}
+      value={Email}
       onChange={(event) => setEmail(event.target.value)}
       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
     />

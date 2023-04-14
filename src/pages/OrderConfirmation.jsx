@@ -9,7 +9,7 @@ const OrderConfirmation = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post('http://localhost:4000/orders', {
+      const response = await axios.post('https://sneaker-sphere-api.herokuapp.com/orders', {
         UserID: userID,
         Price: location.state.price,
       });
