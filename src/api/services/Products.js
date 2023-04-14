@@ -15,7 +15,7 @@ async function getMultiple(page = 1){
     data,
     meta
   }
-}
+} 
 
 async function create(order) {
   const result = await db.query(

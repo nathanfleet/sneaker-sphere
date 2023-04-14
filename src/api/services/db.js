@@ -14,4 +14,4 @@ module.exports = {
   query: function () {
     return pool.query.apply(pool, arguments);
   },
-};
+}; 
