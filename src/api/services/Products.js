@@ -1,12 +1,12 @@
 const db = require('./db');
 const helper = require('../helper');
+const config = require('../config');
 
 async function getMultiple(page = 1){
-  const listPerPage = parseInt(process.env.LIST_PER_PAGE, 10);
-  const offset = helper.getOffset(page, listPerPage);
+  const offset = helper.getOffset(page, config.listPerPage);
 
   const rows = await db.query(
-    `SELECT OrderID, Price, UserID FROM Orders LIMIT ${offset},${listPerPage}`
+    `SELECT ProductID, ProductName, Brand, Model, Quantity, Price, Color FROM Products LIMIT ${offset},${config.listPerPage}`
   );
   const data = helper.emptyOrRows(rows);
   const meta = {page};
@@ -15,36 +15,50 @@ async function getMultiple(page = 1){
     data,
     meta
   }
-} 
+}
 
-async function create(order) {
+async function create(product) {
   const result = await db.query(
-    `INSERT INTO Orders 
-    (OrderID, Price, UserID) 
+    `INSERT INTO Products 
+    (ProductID, ProductName, Brand, Model, Quantity, Price, Color) 
     VALUES 
-    ('${order.OrderID}', '${order.Price}', '${order.UserID}')`
+    ('${product.ProductID}', '${product.ProductName}', '${product.Brand}', '${product.Model}', '${product.Quantity}', ${product.Price}, '${product.Color}')`
   );
 
-  let message = 'Error in creating order';
-  let success = false;
+  let message = 'Error in creating product';
 
   if (result.affectedRows) {
-    message = 'Order created successfully';
-    success = true;
+    message = 'Product created successfully';
   }
 
-  return { success, message, OrderID: order.OrderID };
+  return { message };
+}
+
+async function update(id, product) {
+  const result = await db.query(
+    `UPDATE Products 
+    SET ProductName='${product.ProductName}', Brand='${product.Brand}', Model='${product.Model}', Quantity='${product.Quantity}', Price=${product.Price}, Color='${product.Color}'
+    WHERE ProductID='${id}'`
+  );
+
+  let message = 'Error in updating product';
+
+  if (result.affectedRows) {
+    message = 'Product updated successfully';
+  }
+
+  return { message };
 }
 
 async function remove(id) {
   const result = await db.query(
-    `DELETE FROM Orders WHERE OrderID='${id}'`
+    `DELETE FROM Products WHERE ProductID='${id}'`
   );
 
-  let message = 'Error in deleting order';
+  let message = 'Error in deleting product';
 
   if (result.affectedRows) {
-    message = 'Order deleted successfully';
+    message = 'Product deleted successfully';
   }
 
   return { message };
@@ -53,5 +67,6 @@ async function remove(id) {
 module.exports = {
   getMultiple,
   create,
+  update,
   remove
 }
