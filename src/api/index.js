@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors"); // Import the cors middleware
 const app = express();
-const port = 4000; // Use a different port than the React app
+const port = process.env.PORT || 4000;
 
 const ProductsRouter = require("./routes/Products");
 const SubmissionRouter = require("./routes/Submission");

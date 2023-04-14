@@ -1,12 +1,12 @@
 const db = require('./db');
 const helper = require('../helper');
-const config = require('../config');
 
 async function getMultiple(page = 1) {
-  const offset = helper.getOffset(page, config.listPerPage);
+  const listPerPage = parseInt(process.env.LIST_PER_PAGE, 10);
+  const offset = helper.getOffset(page, listPerPage);
 
   const rows = await db.query(
-    `SELECT UserID, Name, Address, Email FROM \`UserInformation\` LIMIT ${offset},${config.listPerPage}`
+    `SELECT UserID, Name, Address, Email FROM \`UserInformation\` LIMIT ${offset},${listPerPage}`
   );
   const data = helper.emptyOrRows(rows);
   const meta = { page };
