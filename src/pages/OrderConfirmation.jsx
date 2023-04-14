@@ -15,7 +15,7 @@ const OrderConfirmation = () => {
       });
   
       if (response.data.success) {
-        alert(`Order submitted successfully. OrderID: ${response.data.OrderID}`);
+        alert('Thanks for your order! The seller will get back with you soon.');
       } else {
         alert(`Error submitting order: ${response.data.message}`);
       }
@@ -24,6 +24,7 @@ const OrderConfirmation = () => {
       alert(`Error submitting order: ${error.message}`);
     }
   };
+  
 
   const goBack = () => {
     navigate(-1);
