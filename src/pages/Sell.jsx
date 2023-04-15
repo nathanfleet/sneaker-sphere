@@ -9,6 +9,7 @@ const [Model, setModel] = useState('');
 const [Quantity, setQuantity] = useState('');
 const [Price, setPrice] = useState('');
 const [Color, setColor] = useState('');
+const [Image, setImage] = useState('');
 
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -22,6 +23,7 @@ const handleSubmit = async (e) => {
       Quantity,
       Price,
       Color,
+      Image,
     });
 
     if (response.data.success) {
@@ -34,6 +36,7 @@ const handleSubmit = async (e) => {
         Quantity,
         Price,
         Color,
+        Image,
       }));
       alert('Submission successful!');
       setUserID('');
@@ -43,6 +46,7 @@ const handleSubmit = async (e) => {
       setQuantity('');
       setPrice('');
       setColor('');
+      setImage('');
     } else {
       throw new Error(response.data.message);
     }
@@ -177,6 +181,22 @@ const handleSubmit = async (e) => {
                 onChange={(e) => setColor(e.target.value)}
               />
               </div>
+              <div className="mt-4">
+              <label
+                htmlFor="image"
+                className="block text-sm font-medium text-white"
+              >
+                Image URL
+              </label>
+              <input
+                type="text"
+                name="image"
+                id="image"
+                className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full h-10 px-3 py-2 border-gray-300 rounded-md max-w-xs"
+                value={Image}
+                onChange={(e) => setImage(e.target.value)}
+              />
+            </div>
               <button
               type="submit"
               className="mt-8 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:w-auto"

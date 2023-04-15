@@ -18,6 +18,8 @@ async function getMultiple(page = 1) {
 }
 
 async function create(User) {
+  console.log('User object:', User); // Added this line to log the User object
+
   const resultCheck = await db.query(
     `SELECT COUNT(*) as count FROM \`UserInformation\` WHERE UserID='${User.UserID}'`
   );
@@ -32,7 +34,7 @@ async function create(User) {
     `INSERT INTO \`UserInformation\` 
     (UserID, Name, Address, Email) 
     VALUES 
-    ('${User.userID}', '${User.name}', '${User.address}', '${User.email}')`
+    ('${User.UserID}', '${User.Name}', '${User.Address}', '${User.Email}')`
   );
 
   let message = 'Error in creating user';
@@ -40,8 +42,6 @@ async function create(User) {
   if (result.affectedRows) {
     message = 'User created successfully';
   }
-
-  console.log('User object:', User);
 
   return { message };
 }

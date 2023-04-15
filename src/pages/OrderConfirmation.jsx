@@ -13,8 +13,8 @@ const OrderConfirmation = () => {
         UserID: userID,
         Price: location.state.price,
       });
-  
-      if (response.data.success) {
+
+      if (response.status === 200) {
         alert('Thanks for your order! The seller will get back with you soon.');
       } else {
         alert(`Error submitting order: ${response.data.message}`);

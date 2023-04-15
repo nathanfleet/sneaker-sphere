@@ -57,7 +57,7 @@ const handleSubmit = (event) => {
               name="userID"
               value={UserID}
               onChange={(event) => setUserID(event.target.value)}
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             />
           </div>
         </div>
@@ -75,7 +75,7 @@ const handleSubmit = (event) => {
               name="name"
               value={Name}
               onChange={(event) => setName(event.target.value)}
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             />
           </div>
         </div>
@@ -93,7 +93,7 @@ const handleSubmit = (event) => {
               name="address"
               value={Address}
               onChange={(event) => setAddress(event.target.value)}
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             />
           </div>
         </div>
@@ -111,7 +111,7 @@ const handleSubmit = (event) => {
       name="email"
       value={Email}
       onChange={(event) => setEmail(event.target.value)}
-      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+      className="appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
     />
   </div>
 </div>

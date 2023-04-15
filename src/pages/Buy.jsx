@@ -1,27 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import BuyTitle from '../components/BuyTitle';
-import shoe from "../assets/shoe.png"
+import { useNavigate } from 'react-router-dom';
 
-const Buy = () => {
+function Buy() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get('https://sneaker-sphere-api.herokuapp.com/products');
-        if (response.data.data.length > 0) {
-          setProducts(response.data.data);
-        } else {
-          alert('No products found');
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
     fetchProducts();
   }, []);
 
@@ -29,14 +14,34 @@ const Buy = () => {
     navigate('/order-confirmation', { state: { price } });
   };
 
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get('https://sneaker-sphere-api.herokuapp.com/products');
+      console.log('API response:', response);
+      if (response.data && Array.isArray(response.data.data) && response.data.data.length > 0) {
+        const products = response.data.data[0];
+        console.log('Products fetched:', products);
+        setProducts(products);
+      } else {
+        throw new Error('No products found');
+      }
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
+  
+
   return (
     <div className="bg-gray-900 min-h-screen">
-      <BuyTitle />
+      <div className="text-center pt-8">
+        <h1 className="text-5xl font-extrabold text-white mb-6">Buy a Shoe!</h1>
+        <h2 className="text-3xl font-semibold text-white">Select your favorite sneakers</h2>
+      </div>
       <div className="flex flex-wrap justify-center items-center py-12">
         {products.map((product) => (
-          <div key={product.ProductID} className="w-full md:w-1/2 lg:w-1/3 px-4 py-4 flex">
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden flex items-start w-full">
-              <img src={shoe} alt="Shoe" className="h-32 w-32 object-cover p-4" />
+          <div key={product.ProductID} className="w-full sm:w-1/2 lg:w-1/3 px-4 py-4 flex">
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden flex max-w-full">
+              <img src={product.Image} alt="Shoe" className="h-48 w-48 object-cover p-4" />
               <div className="p-4 flex flex-col justify-between w-full">
                 <div>
                   <h2 className="text-lg font-bold mb-2">{product.ProductName}</h2>
@@ -59,6 +64,6 @@ const Buy = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Buy;

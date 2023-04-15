@@ -13,6 +13,7 @@ router.post('/', async (req, res) => {
       Quantity,
       Price,
       Color,
+      Image,
     } = req.body;
 
     // Generate a new product ID
@@ -20,10 +21,10 @@ router.post('/', async (req, res) => {
 
     // Insert product data into products table
     const productInsertQuery = `
-      INSERT INTO Products (ProductID, ProductName, Brand, Model, Quantity, Price, Color)
-      VALUES (?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO Products (ProductID, ProductName, Brand, Model, Quantity, Price, Color, Image)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `;
-    await db.query(productInsertQuery, [newProductID, ProductName, Brand, Model, Quantity, Price, Color]);
+    await db.query(productInsertQuery, [newProductID, ProductName, Brand, Model, Quantity, Price, Color, Image]);
 
     // Insert submission data into submissions table
     const newSubmissionID = helper.generateSubID();
