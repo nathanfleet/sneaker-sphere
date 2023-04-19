@@ -12,7 +12,7 @@ function Hero() {
   };
 
   return (
-    <div className="bg-gray-900 text-white w-screen h-screen mt-5">
+    <div className="overflow-hidden bg-gray-900 text-white w-screen h-screen mt-5">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
         <div className="text-center">
           <div className="w-36 h-36 mx-auto">
